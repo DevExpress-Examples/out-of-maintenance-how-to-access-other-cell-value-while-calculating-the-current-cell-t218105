@@ -1,7 +1,7 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [WebForm1.aspx](./CS/WebAppCustomCellValue/WebForm1.aspx) (VB: [WebForm1.aspx.vb](./VB/WebAppCustomCellValue/WebForm1.aspx.vb))
+* [WebForm1.aspx](./CS/WebAppCustomCellValue/WebForm1.aspx) (VB: [WebForm1.aspx](./VB/WebAppCustomCellValue/WebForm1.aspx))
 * [WebForm1.aspx.cs](./CS/WebAppCustomCellValue/WebForm1.aspx.cs) (VB: [WebForm1.aspx.vb](./VB/WebAppCustomCellValue/WebForm1.aspx.vb))
 <!-- default file list end -->
 # How to access other cell value while calculating the current cell
