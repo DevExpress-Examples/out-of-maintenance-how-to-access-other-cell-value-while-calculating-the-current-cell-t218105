@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="true" CodeBehind="WebForm1.aspx.vb" 
     Inherits="WebAppCustomCellValue.WebForm1" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v14.2, Version=14.2.17.0, Culture=neutral, 
+<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v21.2, Version=21.2.7.0, Culture=neutral, 
     PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.Web.ASPxPivotGrid" TagPrefix="dx" %>
 
@@ -16,24 +16,34 @@
     <form id="form1" runat="server">
     <div>
         <dx:ASPxPivotGrid ID="ASPxPivotGrid1" runat="server" ClientIDMode="AutoID" 
-            DataSourceID="AccessDataSource1" Theme="Metropolis" 
-            OnCustomCellValue="ASPxPivotGrid1_CustomCellValue">
+            DataSourceID="SqlDataSource1" Theme="Metropolis" 
+            OnCustomCellValue="ASPxPivotGrid1_CustomCellValue"
+            OptionsData-DataProcessingEngine="Optimized" IsMaterialDesign="False">
             <Fields>
-                <dx:PivotGridField Area="RowArea" AreaIndex="0" Caption="Category" 
-                    FieldName="CategoryName" ID="fieldCategoryName">
+                <dx:PivotGridField Area="RowArea" AreaIndex="0" Caption="Category" ID="fieldCategoryName">
+                    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="CategoryName" />
+                    </DataBindingSerializable>
                 </dx:PivotGridField>
-                <dx:PivotGridField Area="ColumnArea" AreaIndex="0" FieldName="Country" ID="fieldCountry">
+                <dx:PivotGridField Area="ColumnArea" AreaIndex="0" ID="fieldCountry">
+                    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="Country" />
+                    </DataBindingSerializable>
                 </dx:PivotGridField>
-                <dx:PivotGridField Area="DataArea" AreaIndex="0" Caption="Price" 
-                    FieldName="Extended Price" ID="fieldExtendedPrice">
+                <dx:PivotGridField Area="DataArea" AreaIndex="0" Caption="Price" ID="fieldExtendedPrice">
+                    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="Extended Price" />
+                    </DataBindingSerializable>
                 </dx:PivotGridField>
             </Fields>
             <OptionsView ShowRowGrandTotals="False" />
+
+<OptionsData DataProcessingEngine="Optimized"></OptionsData>
         </dx:ASPxPivotGrid>
-        <asp:AccessDataSource ID="AccessDataSource1" runat="server" 
-            DataFile="~/nwind.mdb" 
-            SelectCommand="SELECT [CategoryName], [Country], [Extended Price] FROM [SalesPerson]">
-        </asp:AccessDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+            SelectCommand="SELECT [CategoryName], [Country], [Extended Price] FROM [SalesPerson]"></asp:SqlDataSource>
     </div>
     </form>
 </body>
